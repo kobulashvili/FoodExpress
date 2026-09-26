@@ -1,0 +1,8 @@
+﻿2026-09-26 11:51:29 [INFO] Order created. OrderId: 67cdd68f5fba4a51b764daecbfafde55, UserId: 1001, Total: 46.00
+2026-09-26 11:51:32 [INFO] Order confirmation email sent. OrderId: 67cdd68f5fba4a51b764daecbfafde55, Email: o.kobulashvili@gmail.com
+2026-09-26 12:00:48 [ERROR] Error starting preparation. OrderId: 67cdd68f5fba4a51b764daecbfafde55 | Exception: Order must be confirmed first.
+2026-09-26 12:00:58 [INFO] Order confirmed by admin. OrderId: 67cdd68f5fba4a51b764daecbfafde55
+2026-09-26 12:01:06 [ERROR] Error starting preparation. OrderId: Start Preparing | Exception: Order was not found.
+2026-09-26 12:01:23 [INFO] Order preparation started. OrderId: 67cdd68f5fba4a51b764daecbfafde55
+2026-09-26 12:01:31 [INFO] Order sent for delivery. OrderId: 67cdd68f5fba4a51b764daecbfafde55
+2026-09-26 12:01:39 [INFO] Order delivered. OrderId: 67cdd68f5fba4a51b764daecbfafde55
