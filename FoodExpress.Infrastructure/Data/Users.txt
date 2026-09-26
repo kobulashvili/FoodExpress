@@ -1,1 +1,1 @@
-﻿1001 | user | user | o.kobulashvili@gmail.com | Customer
+﻿1001 | user | $2a$11$Vk3/N21FT9MzrkrrqHVpmuIHBE90iRK4uMu2fkyB85MynppvnfUIS | o.kobulashvili@gmail.com | Customer

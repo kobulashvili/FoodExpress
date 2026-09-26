@@ -1,5 +1,4 @@
 ﻿using FoodExpress.Domain.Entity;
-using FoodExpress.Domain.Interfaces;
 using FoodExpress.Service.Interfaces;
 
 namespace FoodExpress.Service.Services;
@@ -7,14 +6,14 @@ namespace FoodExpress.Service.Services;
 public class AuthService : IAuthService
 {
     private readonly IUserService _userService;
-    private readonly IEmailService _emailService;
+    private readonly FoodExpress.Domain.Interfaces.IEmailService _emailService;
 
     private readonly Dictionary<string, PendingRegistration>
         _pendingRegistrations = new();
 
     public AuthService(
         IUserService userService,
-        IEmailService emailService)
+        FoodExpress.Domain.Interfaces.IEmailService emailService)
     {
         _userService = userService;
         _emailService = emailService;
@@ -38,8 +37,12 @@ public class AuthService : IAuthService
         if (user == null)
             return null;
 
-        if (user.Password != password)
+        if (!BCrypt.Net.BCrypt.Verify(
+         password,
+         user.Password))
+        {
             return null;
+        }
 
         return user;
     }
@@ -77,10 +80,10 @@ public class AuthService : IAuthService
             throw new ArgumentException(
                 "Address is required.");
 
-        var existingUser =
+        var existingUsername =
             await _userService.GetByUsernameAsync(username);
 
-        if (existingUser != null)
+        if (existingUsername != null)
             throw new InvalidOperationException(
                 "Username already exists.");
 
@@ -92,10 +95,8 @@ public class AuthService : IAuthService
                 "Email already exists.");
 
         var code =
-            Random.Shared.Next(
-                100000,
-                1000000)
-            .ToString();
+            Random.Shared.Next(100000, 1000000)
+                .ToString();
 
         _pendingRegistrations[email] =
             new PendingRegistration(
@@ -126,45 +127,49 @@ public class AuthService : IAuthService
 
         if (!_pendingRegistrations.TryGetValue(
                 email,
-                out var registration))
+                out var pending))
         {
             throw new InvalidOperationException(
-                "No pending registration found.");
+                "Registration request was not found.");
         }
 
-        if (registration.Code != code)
+        if (pending.Code != code)
             throw new InvalidOperationException(
                 "Invalid verification code.");
 
-        var existingUser =
+        var existingUsername =
             await _userService.GetByUsernameAsync(
-                registration.Username);
+                pending.Username);
 
-        if (existingUser != null)
+        if (existingUsername != null)
             throw new InvalidOperationException(
                 "Username already exists.");
 
         var existingEmail =
             await _userService.GetByEmailAsync(
-                registration.Email);
+                pending.Email);
 
         if (existingEmail != null)
             throw new InvalidOperationException(
                 "Email already exists.");
 
-        var existingUsers =
+        var users =
             await _userService.GetAllAsync();
 
-        var newId = existingUsers.Count == 0
+        var userId = users.Count == 0
             ? 1001
-            : existingUsers.Max(x => x.Id) + 1;
+            : users.Max(x => x.Id) + 1;
+
+        // Hash the password before creating the user.
+        var hashedPassword =
+     BCrypt.Net.BCrypt.HashPassword(pending.Password);
 
         var customer = new Customer(
-            newId,
-            registration.Username,
-            registration.Password,
-            registration.Email,
-            registration.Address);
+            userId,
+            pending.Username,
+            hashedPassword,
+            pending.Email,
+            pending.Address);
 
         await _userService.AddAsync(customer);
 

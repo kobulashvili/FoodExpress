@@ -1,6 +1,9 @@
-﻿using FoodExpress.Service.Interfaces;
+﻿
+using BCrypt.Net;
+using FoodExpress.Service.Interfaces;
 using FoodExpress.Domain.Interfaces.Repositories;
 using FoodExpress.Domain.Entity;
+
 namespace FoodExpress.Service.Services;
 
 public class UserService : IUserService

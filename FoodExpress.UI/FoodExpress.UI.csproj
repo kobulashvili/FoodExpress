@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\FoodExpress.Domain\FoodExpress.Domain.csproj" />
     <ProjectReference Include="..\FoodExpress.Infrastructure\FoodExpress.Infrastructure.csproj" />
     <ProjectReference Include="..\FoodExpress.Service\FoodExpress.Service.csproj" />
