@@ -1,59 +1,31 @@
-﻿P001 | 1 | Pizza | Margherita | Pizza | Medium, Thin | 18.00 | true
-P002 | 1 | Pizza | Pepperoni | Pizza | Large, Thin | 24.00 | true
-D001 | 1 | Drink | Coca Cola | Soft Drink | 500ml | 3.50 | true
-D002 | 1 | Drink | Orange Juice | Juice | 300ml | 5.00 | true
-DS001 | 1 | Dessert | Chocolate Cake | Cake | 1 slice | 7.50 | true
-
-P003 | 2 | Pizza | Four Cheese | Pizza | Medium, Classic | 22.00 | true
-P004 | 2 | Pizza | BBQ Chicken | Pizza | Large, Classic | 26.00 | true
-D003 | 2 | Drink | Pepsi | Soft Drink | 500ml | 3.50 | true
-D004 | 2 | Drink | Lemonade | Soft Drink | 400ml | 4.50 | true
-DS002 | 2 | Dessert | Tiramisu | Dessert | 1 portion | 8.50 | true
-
-P005 | 3 | Pizza | Georgian Special | Pizza | Large, Thin | 25.00 | true
-P006 | 3 | Pizza | Mushroom Pizza | Pizza | Medium, Classic | 20.00 | true
-D005 | 3 | Drink | Borjomi | Mineral Water | 500ml | 2.50 | true
-D006 | 3 | Drink | Natakhtari | Soft Drink | 500ml | 3.00 | true
-DS003 | 3 | Dessert | Medok | Cake | 1 slice | 7.00 | true
-
-P007 | 4 | Pizza | Beef Burger Pizza | Pizza | Large, Thin | 27.00 | true
-P008 | 4 | Pizza | Chicken Pizza | Pizza | Medium, Thin | 21.00 | true
-D007 | 4 | Drink | Coca Cola Zero | Soft Drink | 500ml | 3.50 | true
-D008 | 4 | Drink | Iced Tea | Tea | 500ml | 4.00 | true
-DS004 | 4 | Dessert | Brownie | Cake | 1 piece | 6.50 | true
-
-P009 | 5 | Pizza | Carbonara Pizza | Pizza | Large, Classic | 26.00 | true
-P010 | 5 | Pizza | Prosciutto Pizza | Pizza | Medium, Thin | 23.00 | true
-D009 | 5 | Drink | San Pellegrino | Mineral Water | 500ml | 5.00 | true
-D010 | 5 | Drink | Apple Juice | Juice | 300ml | 5.00 | true
-DS005 | 5 | Dessert | Panna Cotta | Dessert | 1 portion | 8.00 | true
-
-P011 | 6 | Pizza | Seafood Pizza | Pizza | Large, Thin | 30.00 | true
-P012 | 6 | Pizza | Salmon Pizza | Pizza | Medium, Classic | 28.00 | true
-D011 | 6 | Drink | Green Tea | Tea | 400ml | 4.00 | true
-D012 | 6 | Drink | Mango Juice | Juice | 300ml | 5.50 | true
-DS006 | 6 | Dessert | Mochi | Dessert | 3 pieces | 9.00 | true
-
-P013 | 7 | Pizza | Cafe Special | Pizza | Medium, Thin | 19.00 | true
-P014 | 7 | Pizza | Vegetable Pizza | Pizza | Large, Classic | 22.00 | true
-D013 | 7 | Drink | Cappuccino | Coffee | 250ml | 6.00 | true
-D014 | 7 | Drink | Fresh Orange | Juice | 300ml | 6.50 | true
-DS007 | 7 | Dessert | Cheesecake | Cake | 1 slice | 8.00 | true
-
-P015 | 8 | Pizza | Chicken BBQ | Pizza | Large, Thin | 25.00 | true
-P016 | 8 | Pizza | Spicy Chicken | Pizza | Medium, Classic | 21.00 | true
-D015 | 8 | Drink | Pepsi Max | Soft Drink | 500ml | 3.50 | true
-D016 | 8 | Drink | Ayran | Dairy Drink | 300ml | 3.00 | true
-DS008 | 8 | Dessert | Apple Pie | Pie | 1 slice | 6.50 | true
-
-P017 | 9 | Pizza | Strawberry Dessert Pizza | Dessert Pizza | Medium, Thin | 20.00 | true
-P018 | 9 | Pizza | Nutella Pizza | Dessert Pizza | Large, Thin | 24.00 | true
-D017 | 9 | Drink | Hot Chocolate | Hot Drink | 300ml | 6.00 | true
-D018 | 9 | Drink | Vanilla Milkshake | Milkshake | 400ml | 7.50 | true
-DS009 | 9 | Dessert | Red Velvet Cake | Cake | 1 slice | 8.50 | true
-
-P019 | 10 | Pizza | Meat Lovers | Pizza | Large, Classic | 29.00 | true
-P020 | 10 | Pizza | Supreme Pizza | Pizza | Large, Thin | 28.00 | true
-D019 | 10 | Drink | Cola | Soft Drink | 500ml | 3.50 | true
-D020 | 10 | Drink | Energy Drink | Energy Drink | 330ml | 6.00 | true
-DS010 | 10 | Dessert | Cheesecake | Cake | 1 slice | 8.00 | true
+﻿D001 | 1 | Drink | Coca Cola | Soft Drink | 500ml | 3.50 | True
+D002 | 1 | Drink | Orange Juice | Juice | 300ml | 5.00 | True
+DS001 | 1 | Dessert | Chocolate Cake | Cake | 1 slice | 7.50 | True
+D003 | 2 | Drink | Pepsi | Soft Drink | 500ml | 3.50 | True
+D004 | 2 | Drink | Lemonade | Soft Drink | 400ml | 4.50 | True
+DS002 | 2 | Dessert | Tiramisu | Dessert | 1 portion | 8.50 | True
+D005 | 3 | Drink | Borjomi | Mineral Water | 500ml | 2.50 | True
+D006 | 3 | Drink | Natakhtari | Soft Drink | 500ml | 3.00 | True
+DS003 | 3 | Dessert | Medok | Cake | 1 slice | 7.00 | True
+D007 | 4 | Drink | Coca Cola Zero | Soft Drink | 500ml | 3.50 | True
+D008 | 4 | Drink | Iced Tea | Tea | 500ml | 4.00 | True
+DS004 | 4 | Dessert | Brownie | Cake | 1 piece | 6.50 | True
+D009 | 5 | Drink | San Pellegrino | Mineral Water | 500ml | 5.00 | True
+D010 | 5 | Drink | Apple Juice | Juice | 300ml | 5.00 | True
+DS005 | 5 | Dessert | Panna Cotta | Dessert | 1 portion | 8.00 | True
+D011 | 6 | Drink | Green Tea | Tea | 400ml | 4.00 | True
+D012 | 6 | Drink | Mango Juice | Juice | 300ml | 5.50 | True
+DS006 | 6 | Dessert | Mochi | Dessert | 3 pieces | 9.00 | True
+D013 | 7 | Drink | Cappuccino | Coffee | 250ml | 6.00 | True
+D014 | 7 | Drink | Fresh Orange | Juice | 300ml | 6.50 | True
+DS007 | 7 | Dessert | Cheesecake | Cake | 1 slice | 8.00 | True
+D015 | 8 | Drink | Pepsi Max | Soft Drink | 500ml | 3.50 | True
+D016 | 8 | Drink | Ayran | Dairy Drink | 300ml | 3.00 | True
+DS008 | 8 | Dessert | Apple Pie | Pie | 1 slice | 6.50 | True
+D017 | 9 | Drink | Hot Chocolate | Hot Drink | 300ml | 6.00 | True
+D018 | 9 | Drink | Vanilla Milkshake | Milkshake | 400ml | 7.50 | True
+DS009 | 9 | Dessert | Red Velvet Cake | Cake | 1 slice | 8.50 | True
+D019 | 10 | Drink | Cola | Soft Drink | 500ml | 3.50 | True
+D020 | 10 | Drink | Energy Drink | Energy Drink | 330ml | 6.00 | True
+DS010 | 10 | Dessert | Cheesecake | Cake | 1 slice | 8.00 | True
+123 | 123 | Pizza | pizza | pizza | 5;5 | 20 | True

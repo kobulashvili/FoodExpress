@@ -6,3 +6,13 @@
 2026-09-26 12:01:23 [INFO] Order preparation started. OrderId: 67cdd68f5fba4a51b764daecbfafde55
 2026-09-26 12:01:31 [INFO] Order sent for delivery. OrderId: 67cdd68f5fba4a51b764daecbfafde55
 2026-09-26 12:01:39 [INFO] Order delivered. OrderId: 67cdd68f5fba4a51b764daecbfafde55
+2026-09-26 21:16:27 [INFO] Order created. OrderId: 56d0ed2bb688491dbab282ce6a24e598, UserId: 1001, Total: 34.00
+2026-09-26 21:16:30 [INFO] Order confirmation email sent. OrderId: 56d0ed2bb688491dbab282ce6a24e598, Email: o.kobulashvili@gmail.com
+2026-09-26 21:17:13 [INFO] Order confirmed by admin. OrderId: 56d0ed2bb688491dbab282ce6a24e598
+2026-09-26 21:17:26 [ERROR] Error completing delivery. OrderId: 56d0ed2bb688491dbab282ce6a24e598 | Exception: Order must be out for delivery first.
+2026-09-26 21:17:36 [INFO] Order preparation started. OrderId: 56d0ed2bb688491dbab282ce6a24e598
+2026-09-26 21:17:42 [INFO] Order sent for delivery. OrderId: 56d0ed2bb688491dbab282ce6a24e598
+2026-09-26 21:17:47 [INFO] Order delivered. OrderId: 56d0ed2bb688491dbab282ce6a24e598
+2026-09-30 20:17:29 [ERROR] Error creating order. UserId: 1001 | Exception: Promo code is expired or inactive.
+2026-09-30 20:30:16 [INFO] Order created. OrderId: 36f44e69a003404fa5fc8219329759ce, UserId: 1001, Total: 74.50
+2026-09-30 20:30:20 [INFO] Order confirmation email sent. OrderId: 36f44e69a003404fa5fc8219329759ce, Email: o.kobulashvili@gmail.com

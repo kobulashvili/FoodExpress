@@ -1,1 +1,5 @@
 ﻿67cdd68f5fba4a51b764daecbfafde55 | D020 | Energy Drink | 6 | 6.00 | 36.00
+56d0ed2bb688491dbab282ce6a24e598 | D016 | Ayran | 2 | 3.00 | 6.00
+56d0ed2bb688491dbab282ce6a24e598 | DS010 | Cheesecake | 2 | 8.00 | 16.00
+36f44e69a003404fa5fc8219329759ce | D017 | Hot Chocolate | 2 | 6.00 | 12.00
+36f44e69a003404fa5fc8219329759ce | DS009 | Red Velvet Cake | 5 | 8.50 | 42.50

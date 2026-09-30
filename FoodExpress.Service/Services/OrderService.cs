@@ -1,8 +1,10 @@
-﻿
-using FoodExpress.Domain.Entity;
+﻿using FoodExpress.Domain.Entity;
 using FoodExpress.Domain.Interfaces;
 using FoodExpress.Domain.Interfaces.Repositories;
 using FoodExpress.Service.Interfaces;
+using System.Net;
+using System.Net.Mail;
+using System.Text;
 
 namespace FoodExpress.Service.Services;
 
@@ -417,44 +419,199 @@ public class OrderService : IOrderService
     private static string BuildOrderEmailBody(
         Order order)
     {
-        var lines = new List<string>();
-
-        lines.Add("FoodExpress");
-        lines.Add("Order Confirmation");
-        lines.Add("----------------------------------------");
-        lines.Add($"Order ID: {order.Id}");
-        lines.Add(
-            $"Date: {order.CreatedAt:yyyy-MM-dd HH:mm:ss}");
-        lines.Add(
-            $"Delivery address: {order.Address}");
-        lines.Add("");
-        lines.Add("Items:");
-        lines.Add("----------------------------------------");
+        var itemsHtml = new StringBuilder();
 
         foreach (var item in order.Items)
         {
-            lines.Add(
-                $"{item.Name} x {item.Quantity} " +
-                $"@ {item.UnitPrice:F2} ₾ = " +
-                $"{item.LineTotal:F2} ₾");
+            itemsHtml.Append($@"
+                <tr>
+                    <td style='padding:12px; border-bottom:1px solid #eeeeee; color:#333333;'>
+                        {item.Name}
+                    </td>
+
+                    <td style='padding:12px; border-bottom:1px solid #eeeeee; text-align:center; color:#555555;'>
+                        {item.Quantity}
+                    </td>
+
+                    <td style='padding:12px; border-bottom:1px solid #eeeeee; text-align:right; color:#555555;'>
+                        {item.UnitPrice:F2} ₾
+                    </td>
+
+                    <td style='padding:12px; border-bottom:1px solid #eeeeee; text-align:right; font-weight:bold; color:#333333;'>
+                        {item.LineTotal:F2} ₾
+                    </td>
+                </tr>");
         }
 
-        lines.Add("----------------------------------------");
-        lines.Add(
-            $"Subtotal: {order.Subtotal:F2} ₾");
-        lines.Add(
-            $"Delivery fee: {order.DeliveryFee:F2} ₾");
-        lines.Add(
-            $"Discount: {order.Discount:F2} ₾");
-        lines.Add(
-            $"TOTAL: {order.Total:F2} ₾");
-        lines.Add("");
-        lines.Add($"Status: {order.Status}");
-        lines.Add("");
-        lines.Add("Thank you for using FoodExpress!");
+        return $@"
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <title>FoodExpress Order</title>
+</head>
 
-        return string.Join(
-            Environment.NewLine,
-            lines);
+<body style='margin:0; padding:0; background-color:#f4f6f8; font-family:Arial, Helvetica, sans-serif;'>
+
+    <div style='max-width:650px; margin:30px auto; background:#ffffff; border-radius:12px; overflow:hidden;'>
+
+        <div style='background:#ff6b35; padding:25px; text-align:center;'>
+            <div style='font-size:32px; font-weight:bold; color:#ffffff;'>
+                🍔 FoodExpress
+            </div>
+
+            <div style='margin-top:8px; color:#ffffff; font-size:15px;'>
+                Order Confirmation
+            </div>
+        </div>
+
+        <div style='padding:30px;'>
+
+            <h2 style='margin-top:0; color:#333333;'>
+                Thank you for your order!
+            </h2>
+
+            <p style='color:#555555; font-size:15px;'>
+                Your order has been successfully created and is waiting for confirmation.
+            </p>
+
+            <div style='background:#f7f7f7; padding:18px; border-radius:8px; margin:25px 0;'>
+
+                <p style='margin:0 0 8px 0; color:#777777; font-size:13px;'>
+                    ORDER ID
+                </p>
+
+                <p style='margin:0; color:#222222; font-size:16px; font-weight:bold;'>
+                    #{order.Id}
+                </p>
+
+                <p style='margin:15px 0 5px 0; color:#777777; font-size:13px;'>
+                    DATE
+                </p>
+
+                <p style='margin:0; color:#333333; font-size:14px;'>
+                    {order.CreatedAt:yyyy-MM-dd HH:mm:ss}
+                </p>
+
+                <p style='margin:15px 0 5px 0; color:#777777; font-size:13px;'>
+                    DELIVERY ADDRESS
+                </p>
+
+                <p style='margin:0; color:#333333; font-size:14px;'>
+                    {order.Address}
+                </p>
+
+            </div>
+
+            <h3 style='color:#333333; margin-bottom:12px;'>
+                Your Order
+            </h3>
+
+            <table style='width:100%; border-collapse:collapse; font-size:14px;'>
+
+                <thead>
+                    <tr style='background:#f7f7f7;'>
+                        <th style='padding:12px; text-align:left; color:#555555;'>
+                            Item
+                        </th>
+
+                        <th style='padding:12px; text-align:center; color:#555555;'>
+                            Qty
+                        </th>
+
+                        <th style='padding:12px; text-align:right; color:#555555;'>
+                            Price
+                        </th>
+
+                        <th style='padding:12px; text-align:right; color:#555555;'>
+                            Total
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {itemsHtml}
+                </tbody>
+
+            </table>
+
+            <div style='margin-top:25px; background:#fafafa; padding:20px; border-radius:8px;'>
+
+                <table style='width:100%; border-collapse:collapse;'>
+
+                    <tr>
+                        <td style='padding:6px 0; color:#666666;'>
+                            Subtotal
+                        </td>
+
+                        <td style='padding:6px 0; text-align:right; color:#333333;'>
+                            {order.Subtotal:F2} ₾
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style='padding:6px 0; color:#666666;'>
+                            Delivery fee
+                        </td>
+
+                        <td style='padding:6px 0; text-align:right; color:#333333;'>
+                            {order.DeliveryFee:F2} ₾
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style='padding:6px 0; color:#666666;'>
+                            Discount
+                        </td>
+
+                        <td style='padding:6px 0; text-align:right; color:#2e8b57;'>
+                            -{order.Discount:F2} ₾
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td style='padding-top:15px; border-top:2px solid #eeeeee; font-size:18px; font-weight:bold; color:#333333;'>
+                            TOTAL
+                        </td>
+
+                        <td style='padding-top:15px; border-top:2px solid #eeeeee; text-align:right; font-size:20px; font-weight:bold; color:#ff6b35;'>
+                            {order.Total:F2} ₾
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+
+            <div style='margin-top:25px; text-align:center;'>
+
+                <span style='display:inline-block; background:#fff3ed; color:#ff6b35; padding:10px 18px; border-radius:20px; font-size:14px; font-weight:bold;'>
+                    Status: {order.Status}
+                </span>
+
+            </div>
+
+            <p style='margin-top:30px; text-align:center; color:#777777; font-size:14px;'>
+                Thank you for choosing FoodExpress! 🍔
+            </p>
+
+        </div>
+
+        <div style='background:#333333; padding:20px; text-align:center;'>
+
+            <p style='margin:0; color:#ffffff; font-size:13px;'>
+                FoodExpress
+            </p>
+
+            <p style='margin:7px 0 0; color:#aaaaaa; font-size:11px;'>
+                This is an automated email. Please do not reply.
+            </p>
+
+        </div>
+
+    </div>
+
+</body>
+</html>";
     }
 }

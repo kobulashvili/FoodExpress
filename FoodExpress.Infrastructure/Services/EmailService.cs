@@ -36,8 +36,10 @@ public class EmailService : IEmailService
             message.From = new MailAddress(_senderEmail);
             message.To.Add(recipientEmail);
             message.Subject = subject;
+
+            // body უკვე HTML-ია, რომელსაც OrderService ქმნის
             message.Body = body;
-            message.IsBodyHtml = false;
+            message.IsBodyHtml = true;
 
             using var smtp = new SmtpClient(
                 _smtpHost,
@@ -45,9 +47,10 @@ public class EmailService : IEmailService
 
             smtp.EnableSsl = true;
 
-            smtp.Credentials = new NetworkCredential(
-                _senderEmail,
-                _senderPassword);
+            smtp.Credentials =
+                new NetworkCredential(
+                    _senderEmail,
+                    _senderPassword);
 
             await smtp.SendMailAsync(message);
         }
@@ -84,6 +87,7 @@ public class EmailService : IEmailService
             message.Body =
                 $"Your FoodExpress verification code is: {code}";
 
+            // Verification email რჩება ჩვეულებრივ ტექსტად
             message.IsBodyHtml = false;
 
             using var smtp = new SmtpClient(
@@ -92,9 +96,10 @@ public class EmailService : IEmailService
 
             smtp.EnableSsl = true;
 
-            smtp.Credentials = new NetworkCredential(
-                _senderEmail,
-                _senderPassword);
+            smtp.Credentials =
+                new NetworkCredential(
+                    _senderEmail,
+                    _senderPassword);
 
             await smtp.SendMailAsync(message);
         }

@@ -9,3 +9,4 @@
 9 | Sweet Garden | Marjanishvili Street 10 | True
 10 | Food Factory | Kazbegi Avenue 31 | True
 11 | rest | rest11 | True
+123 | rest | rest | True
